@@ -214,8 +214,8 @@
 }
 #previewSection .selectorsButton .haken {
   position: relative;
-  right: 21px;
-  top: 24px;
+  right: -3px;
+  top: 20px;
   visibility: hidden;
 }
 #previewSection .selectorsButton .haken.active {
