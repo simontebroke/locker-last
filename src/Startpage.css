@@ -195,7 +195,6 @@
   position: relative;
   height: 99px;
   width: 75px;
-  place-items: center !important;
 }
 #previewSection .selectorsButton.styleButton {
   top: 44.5px;
@@ -258,6 +257,7 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  margin: 0 10px;
 }
 #previewSection .imgContainer img {
   max-width: 360px;

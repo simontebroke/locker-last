@@ -191,7 +191,6 @@
     position: relative;
     height: 99px;
     width: 75px;
-    place-items: center !important;
     &.styleButton {
       top: 44.5px;
       right: 78px;
@@ -254,6 +253,7 @@
       width: 55px;
       height: 55px;
       border-radius: 50%;
+      margin: 0 10px;
     }
   }
   .imgContainer {
