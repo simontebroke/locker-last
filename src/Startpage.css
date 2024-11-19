@@ -195,7 +195,7 @@
   position: relative;
   height: 99px;
   width: 75px;
-  place-items: center;
+  place-items: center !important;
 }
 #previewSection .selectorsButton.styleButton {
   top: 44.5px;
@@ -215,7 +215,7 @@
 }
 #previewSection .selectorsButton .haken {
   position: relative;
-  left: -21px;
+  right: 21px;
   top: 24px;
   visibility: hidden;
 }
