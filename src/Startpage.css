@@ -257,7 +257,7 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  margin: 0 10px;
+  margin: 0 auto;
 }
 #previewSection .imgContainer img {
   max-width: 360px;
