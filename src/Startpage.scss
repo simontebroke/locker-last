@@ -1,7 +1,7 @@
 .topContainer {
   display: flex;
   justify-content: space-between;
-  padding: 68px 14px;
+  padding: 16px 14px;
   position: fixed;
   width: 100vw;
   .topContainerHeading {
@@ -172,24 +172,6 @@
   }
 }
 
-.loadingCircle {
-  animation: rotate 1.5s linear infinite;
-  margin-top: -40px;
-  visibility: hidden;
-  &.active {
-    visibility: visible;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #previewSection {
   display: flex;
   align-items: center;
@@ -207,24 +189,24 @@
     display: flex;
   }
   .selectorsButton {
-    position: relative;
+    position: absolute;
     height: 99px;
     width: 75px;
     &.styleButton {
-      top: 44.5px;
-      right: 78px;
+      top: 176px;
+      left: 56px;
     }
     &.languageButton {
-      top: 85px;
-      left: 125px;
+      top: 214px;
+      right: 18px;
     }
     &.formatButton {
-      top: -52px;
-      left: -100px;
+      top: 420px;
+      left: 43px;
     }
     &.uploadButton {
-      top: -40px;
-      left: 94px;
+      top: 435px;
+      right: 46px;
     }
     .haken {
       position: relative;
@@ -275,13 +257,68 @@
       margin: 0 auto;
     }
   }
-  .imgContainer {
+  .formatLoading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 22px;
+  }
+  .container {
+    max-width: 360px;
+    .prevBox {
+      background-color: #ffffff;
+      box-shadow: 0px 4px 29.6px 0px #00063021;
+      padding: 12px 13px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      position: relative;
+      top: 15px;
+      margin-bottom: 25px;
+      p {
+        font-size: 15px;
+        font-weight: 590;
+        line-height: 18px;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        span {
+          background: radial-gradient(
+            100% 6362.58% at 100% 0%,
+            #ea994f 8.41%,
+            #e46f90 32.29%,
+            #cc6deb 50.99%,
+            #65b9f9 88.62%
+          );
+          color: transparent;
+          background-clip: text;
+        }
+      }
+    }
+
     img {
       max-width: 360px;
     }
   }
 }
 
+.loadingCircle {
+  animation: rotate 1.5s linear infinite;
+  visibility: hidden;
+
+  &.active {
+    visibility: visible;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .overlay {
   position: fixed;
   top: 0;

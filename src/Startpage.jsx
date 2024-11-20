@@ -11,18 +11,23 @@ function Startpage() {
 
   function handleStyleDoneClick() {
     setAffectPreviewStyle(true);
-    setIsSpinnerActive(true);
-    setTimeout(() => {
-      setIsSpinnerActive(false);
-    }, 1500);
+    if (selectedFormat && selectedStyleButton && isUploaded) {
+      setIsSpinnerActive(true);
+      setTimeout(() => {
+        setIsSpinnerActive(false);
+      }, 1500);
+    }
   }
 
   function handleFormatDoneClick() {
     setAffectPreviewFormat(true);
     setIsSpinnerActive(true);
-    setTimeout(() => {
-      setIsSpinnerActive(false);
-    }, 1500);
+    if (selectedFormat && selectedStyleButton && isUploaded) {
+      setIsSpinnerActive(true);
+      setTimeout(() => {
+        setIsSpinnerActive(false);
+      }, 1500);
+    }
   }
 
   const [isSpinnerActive, setIsSpinnerActive] = useState(false);
@@ -224,14 +229,27 @@ function Startpage() {
             </div>
           </div>
         </div>
-        <div className="imgContainer">
-          <img src="/spread.png" alt="Preview" />
+        <div className="formatLoading">
+          {selectedFormat && selectedButton && isUploaded ? (
+            <div className="container">
+              <img src="/spread.png" alt="Preview" />
+            </div>
+          ) : (
+            <div className="container">
+              <div className="prevBox">
+                <p>
+                  Upload your Document <br /> & transform it into{" "}
+                  <span>WOW.</span>
+                </p>
+              </div>
+            </div>
+          )}
+          <img
+            src="/loading.svg"
+            alt="loading..."
+            className={`loadingCircle ${isSpinnerActive ? "active" : ""}`}
+          />
         </div>
-        <img
-          src="/loading.svg"
-          alt="loading..."
-          className={`loadingCircle ${isSpinnerActive ? "active" : ""}`}
-        />
         <div className="buttonContainerBottomRow">
           <div
             className="selectorsButton formatButton"
