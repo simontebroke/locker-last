@@ -169,17 +169,35 @@
 }
 #footer .lowerFunctions .uploadButton .uploadTextSecond.uploadedText {
   color: #0372e4;
-  width: 75px; /* Setze eine feste Breite für das Container-Element */
-  white-space: nowrap; /* Verhindert Zeilenumbrüche */
-  overflow: hidden; /* Verhindert das Anzeigen von Text, der über das Element hinausgeht */
+  width: 75px;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.loadingCircle {
+  animation: rotate 1.5s linear infinite;
+  margin-top: -40px;
+  visibility: hidden;
+}
+.loadingCircle.active {
+  visibility: visible;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 #previewSection {
   display: flex;
   align-items: center;
   height: 85vh;
   justify-content: center;
+  gap: -430px;
   overflow-x: hidden;
   flex-direction: column;
 }
@@ -205,11 +223,11 @@
   left: 125px;
 }
 #previewSection .selectorsButton.formatButton {
-  top: -82px;
+  top: -52px;
   left: -100px;
 }
 #previewSection .selectorsButton.uploadButton {
-  top: -70px;
+  top: -40px;
   left: 94px;
 }
 #previewSection .selectorsButton .haken {
@@ -338,7 +356,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 9px;
 }
 .modal .styleSelectorButtonContainer .styleButtonContainer .btnConE {
   padding: 2px;
@@ -347,7 +365,7 @@
   outline: #1d1d1f 2px solid;
   border-radius: 50%;
   max-height: 59px;
-  margin-bottom: 4px;
+  margin-bottom: -33px;
 }
 .modal .styleSelectorButtonContainer .styleButtonContainer button {
   min-width: 55px;
@@ -356,10 +374,10 @@
   border: none;
   background-color: #cd7575;
 }
-.modal .styleSelectorButtonContainer .styleButtonContainer button img {
+.modal .styleSelectorButtonContainer .styleButtonContainer .ok {
   position: relative;
-  right: -22px;
-  bottom: -22px;
+  right: -21px;
+  bottom: -3px;
   display: inline-block;
 }
 .modal .styleSelectorButtonContainer .styleButtonContainer .buttonConText {

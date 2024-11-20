@@ -6,6 +6,29 @@ function Startpage() {
   const [selectedStyleButton, setSelectedStyleButton] = useState(null);
   const [selectedLanguageButton, setSelectedLanguageButton] = useState(null);
 
+  const [affectPreviewStyle, setAffectPreviewStyle] = useState(false);
+  const [affectPreviewFormat, setAffectPreviewFormat] = useState(false);
+
+  function handleStyleDoneClick() {
+    setAffectPreviewStyle(true);
+    setIsSpinnerActive(true);
+    setTimeout(() => {
+      setIsSpinnerActive(false);
+    }, 1500);
+  }
+
+  function handleFormatDoneClick() {
+    setAffectPreviewFormat(true);
+    setIsSpinnerActive(true);
+    setTimeout(() => {
+      setIsSpinnerActive(false);
+    }, 1500);
+  }
+
+  const [isSpinnerActive, setIsSpinnerActive] = useState(false);
+
+  // Function to handle button click
+
   const [showLanguageModal, setShowLanguageModal] = useState(false);
 
   const [showFormatModal, setShowFormatModal] = useState(false);
@@ -26,14 +49,11 @@ function Startpage() {
 
   const [isUploaded, setIsUploaded] = useState(false);
 
-  let preview;
-
   const buttons = [
-    { id: 1, text: "Presentation" },
-    { id: 2, text: "Flyer" },
-    { id: 3, text: "Summary" },
+    { id: 1, text: "Summary" },
+    { id: 2, text: "Presentation" },
+    { id: 3, text: "Flyer" },
     { id: 4, text: "Worksheet" },
-    { id: 5, text: "Brochure" },
   ];
 
   const selectedFormat = buttons.find(
@@ -41,10 +61,10 @@ function Startpage() {
   )?.text;
 
   const styleButtons = [
-    { id: 1, text: "Business" },
-    { id: 2, text: "Education" },
-    { id: 3, text: "Finance" },
-    { id: 4, text: "Aesthetic" },
+    { id: 1, text: "Business", image: "/business.svg" },
+    { id: 2, text: "Education", image: "/education.svg" },
+    { id: 3, text: "Minimalistic", image: "/minimalistic.svg" },
+    { id: 4, text: "Aesthetic", image: "/aesthetic.svg" },
   ];
 
   const languageButtons = [
@@ -157,7 +177,7 @@ function Startpage() {
               toggleModal();
             }}
           >
-            {selectedStyleButton ? (
+            {selectedStyleButton && affectPreviewStyle ? (
               <img src="/hayken.svg" className="haken active" />
             ) : (
               <img src="/hayken.svg" className="haken" />
@@ -168,7 +188,7 @@ function Startpage() {
             <div className="uploadTextContainer">
               <p className="selectorsText">Style</p>
               <p className="selectorsSLtext">
-                {selectedStyleButton
+                {selectedStyleButton && affectPreviewStyle
                   ? styleButtons.find(
                       (button) => button.id === selectedStyleButton
                     ).text
@@ -207,6 +227,11 @@ function Startpage() {
         <div className="imgContainer">
           <img src="/spread.png" alt="Preview" />
         </div>
+        <img
+          src="/loading.svg"
+          alt="loading..."
+          className={`loadingCircle ${isSpinnerActive ? "active" : ""}`}
+        />
         <div className="buttonContainerBottomRow">
           <div
             className="selectorsButton formatButton"
@@ -215,7 +240,7 @@ function Startpage() {
               toggleModal();
             }}
           >
-            {selectedFormat ? (
+            {selectedFormat && affectPreviewFormat ? (
               <img src="/hayken.svg" className="haken active" />
             ) : (
               <img src="/hayken.svg" className="haken" />
@@ -226,7 +251,7 @@ function Startpage() {
             <div className="uploadTextContainer">
               <p className="selectorsText">Format</p>
               <p className="selectorsSLtext">
-                {selectedButton
+                {selectedButton && affectPreviewFormat
                   ? buttons.find((button) => button.id === selectedButton).text
                   : ""}
               </p>
@@ -262,17 +287,24 @@ function Startpage() {
           </div>
         </div>
       </section>
-
+      <img src="/loading.svg" alt="loading..." className="loadingCircle" />
       <section id="footer"></section>
       <div className={overlayClassName} onClick={toggleModal} />
       <div className={modalClassName}>
-        <button className="doneButton" onClick={toggleModal}>
-          Done
-        </button>
         {!showLanguageModal && !showFormatModal ? (
           <>
+            <button
+              className="doneButton"
+              onClick={() => {
+                toggleModal();
+                handleStyleDoneClick();
+              }}
+            >
+              Done
+            </button>
             <p className="paragraphHeading">Style</p>
             <p className="styleDes">Choose a style for your presentation.</p>
+
             <div className="styleSelectorButtonContainer">
               {styleButtons.map((styleButton) => (
                 <div className="styleButtonContainer" key={styleButton.id}>
@@ -286,11 +318,12 @@ function Startpage() {
                     <button
                       onClick={() => handleStyleButtonClick(styleButton.id)}
                     >
-                      {selectedStyleButton === styleButton.id && (
-                        <img src="/haken.svg" />
-                      )}
+                      <img src={styleButton.image} className="prev" />
                     </button>
                   </div>
+                  {selectedStyleButton === styleButton.id && (
+                    <img src="/blackhaken.svg" className="ok" />
+                  )}
                   <p className="buttonConText">{styleButton.text}</p>
                 </div>
               ))}
@@ -298,6 +331,9 @@ function Startpage() {
           </>
         ) : showLanguageModal && !showFormatModal ? (
           <>
+            <button className="doneButton" onClick={toggleModal}>
+              Done
+            </button>
             <p className="paragraphHeading">Language</p>
             <p className="styleDes">Choose a language for your presentation.</p>
             <div className="styleSelectorButtonContainer">
@@ -315,11 +351,12 @@ function Startpage() {
                         handleLanguageButtonClick(languageButton.id)
                       }
                     >
-                      {selectedLanguageButton === languageButton.id && (
-                        <img src="/haken.svg" />
-                      )}
+                      <img src="/haken.svg" className="prev" />
                     </button>
                   </div>
+                  {selectedLanguageButton === languageButton.id && (
+                    <img src="/blackhaken.svg" className="ok" />
+                  )}
                   <p className="buttonConText">{languageButton.text}</p>
                 </div>
               ))}
@@ -327,6 +364,15 @@ function Startpage() {
           </>
         ) : showFormatModal ? (
           <>
+            <button
+              className="doneButton"
+              onClick={() => {
+                toggleModal();
+                handleFormatDoneClick();
+              }}
+            >
+              Done
+            </button>
             <p className="paragraphHeading">Format</p>
             <p className="styleDes">Choose a format for your presentation.</p>
             <div className="styleSelectorButtonContainer">
@@ -340,9 +386,12 @@ function Startpage() {
                     }
                   >
                     <button onClick={() => handleButtonClick(button.id)}>
-                      {selectedButton === button.id && <img src="/haken.svg" />}
+                      <img src={button.image} className="prev" />
                     </button>
                   </div>
+                  {selectedButton === button.id && (
+                    <img src="/blackhaken.svg" className="ok" />
+                  )}
                   <p className="buttonConText">{button.text}</p>
                 </div>
               ))}
