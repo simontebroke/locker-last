@@ -21,12 +21,11 @@ function Startpage() {
 
   function handleFormatDoneClick() {
     setAffectPreviewFormat(true);
-    setIsSpinnerActive(true);
-    if (selectedFormat && selectedStyleButton && isUploaded) {
+    if (selectedFormat && selectedStyleButton && isUploaded === true) {
       setIsSpinnerActive(true);
       setTimeout(() => {
         setIsSpinnerActive(false);
-      }, 1500);
+      }, 1000);
     }
   }
 
@@ -138,12 +137,7 @@ function Startpage() {
   }
 
   function toggleFinishModal() {
-    if (
-      isUploaded &&
-      selectedStyleButton &&
-      selectedButton &&
-      selectedLanguageButton
-    ) {
+    if (isUploaded && selectedStyleButton && selectedButton) {
       if (finishModalClassName === "finishModal") {
         setFinishModalClassName("finishModal createModalOpen");
         setFinishOverlayClassName("finishOverlay");
@@ -153,6 +147,35 @@ function Startpage() {
       }
     }
   }
+
+  const [loaded, setLoaded] = useState(false);
+
+  if (isUploaded && selectedStyleButton && selectedButton) {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1500);
+  }
+
+  const renderSelectedImage = () => {
+    switch (selectedButton) {
+      case 1:
+        return "/spread.png";
+      case 2:
+        if (selectedStyleButton === 1) {
+          return "/spread.png";
+        } else if (selectedStyleButton === 2) {
+          return "2.png";
+        } else if (selectedStyleButton === 3) {
+          return "3.png";
+        } else if (selectedStyleButton === 4) {
+          return "4.png";
+        }
+      case 3:
+        return "/spread.png";
+      case 4:
+        return "/spread.png";
+    }
+  };
 
   return (
     <>
@@ -172,7 +195,6 @@ function Startpage() {
           Create
         </button>
       </div>
-
       <section id="previewSection">
         <div className="buttonContainerTopRow">
           <div
@@ -230,9 +252,9 @@ function Startpage() {
           </div>
         </div>
         <div className="formatLoading">
-          {selectedFormat && selectedButton && isUploaded ? (
+          {loaded ? (
             <div className="container">
-              <img src="/spread.png" alt="Preview" />
+              <img src={renderSelectedImage()} alt="Preview" />
             </div>
           ) : (
             <div className="container">

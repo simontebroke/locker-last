@@ -36,148 +36,11 @@
   }
 }
 
-#footer {
-  position: fixed;
-  bottom: 13px;
-  padding: 0 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  .formatSelection {
-    .formatSelectorText {
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 590;
-      line-height: 15.51px;
-      text-align: left;
-      text-underline-position: from-font;
-      text-decoration-skip-ink: none;
-      color: #1d1d1f;
-      margin-bottom: 10px;
-    }
-    .formatSelectorButtonContainer {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-    }
-    .buttonCon {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2px;
-      .btnConE {
-        padding: 2px;
-
-        &.active {
-          outline: #1d1d1f 2px solid;
-          border-radius: 50%;
-          max-height: 59px;
-          margin-bottom: 4px;
-        }
-      }
-      button {
-        min-width: 55px;
-        min-height: 55px;
-        border-radius: 50%;
-        border: none;
-        background-color: #cd7575;
-        img {
-          position: relative;
-          right: -22px;
-          bottom: -22px;
-          display: inline-block;
-        }
-      }
-      .buttonConText {
-        font-size: 12px;
-        font-weight: 510;
-        line-height: 14.32px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color: #1d1d1f;
-      }
-    }
-  }
-  .lowerFunctions {
-    margin-top: 36px;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    max-width: 450px;
-    min-width: 400px;
-    .uploadButton {
-      background: #eeecf0;
-      display: flex;
-      flex-direction: row;
-      border-radius: 25px;
-      padding: 4px;
-      align-items: center;
-      width: 100%;
-      gap: 7px;
-      .hook {
-        position: relative;
-        right: -11px;
-        bottom: -14px;
-        display: inline-block;
-      }
-      &.languageButton {
-        width: auto;
-        padding: 0px;
-        .svgContainerLang {
-          padding: 12px;
-        }
-        .svgContainer {
-          background-color: #eeecf0;
-        }
-      }
-      .svgContainer {
-        background-color: #fff;
-        padding: 9px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .uploadText {
-        font-size: 10px;
-        font-weight: 510;
-        line-height: 11.93px;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color: #959397;
-        text-transform: uppercase;
-        margin-bottom: 1px;
-      }
-      .uploadTextSecond {
-        font-size: 13px;
-        font-weight: 590;
-        line-height: 15.51px;
-        letter-spacing: -0.03em;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color: #1d1d1f;
-
-        &.uploadedText {
-          color: #0372e4;
-          width: 75px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-  }
-}
-
 #previewSection {
   display: flex;
   align-items: center;
-  height: 85vh;
+  height: 700px;
   justify-content: center;
-  gap: -430px;
   overflow-x: hidden;
   flex-direction: column;
   .buttonContainerTopRow {
@@ -192,6 +55,7 @@
     position: absolute;
     height: 99px;
     width: 75px;
+    z-index: 1;
     &.styleButton {
       top: 176px;
       left: 56px;
