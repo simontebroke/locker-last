@@ -50,10 +50,10 @@ function Startpage() {
   const [isUploaded, setIsUploaded] = useState(false);
 
   const buttons = [
-    { id: 1, text: "Summary" },
-    { id: 2, text: "Presentation" },
-    { id: 3, text: "Flyer" },
-    { id: 4, text: "Worksheet" },
+    { id: 1, text: "Summary", image: "/summary.svg", bg: "#E2ECFF" },
+    { id: 2, text: "Presentation", image: "/presentation.svg", bg: "#F0E4FF" },
+    { id: 3, text: "Flyer", image: "/flyer.svg", bg: "#F1FFFC" },
+    { id: 4, text: "Worksheet", image: "/worksheet.svg", bg: "#FEFFEE" },
   ];
 
   const selectedFormat = buttons.find(
@@ -61,17 +61,17 @@ function Startpage() {
   )?.text;
 
   const styleButtons = [
-    { id: 1, text: "Business", image: "/business.svg" },
-    { id: 2, text: "Education", image: "/education.svg" },
-    { id: 3, text: "Minimalistic", image: "/minimalistic.svg" },
-    { id: 4, text: "Aesthetic", image: "/aesthetic.svg" },
+    { id: 1, text: "Business", image: "/business.svg", bg: "#EEF8FF" },
+    { id: 2, text: "Education", image: "/education.svg", bg: "#F4FFDE" },
+    { id: 3, text: "Minimalistic", image: "/minimalistic.svg", bg: "#FFF8EE" },
+    { id: 4, text: "Aesthetic", image: "/aesthetic.svg", bg: "#EDE8FF" },
   ];
 
   const languageButtons = [
-    { id: 1, text: "English" },
-    { id: 2, text: "German" },
-    { id: 3, text: "Arabic" },
-    { id: 4, text: "French" },
+    { id: 1, text: "English", image: "/lang.svg", bg: "#FCFCFD" },
+    { id: 2, text: "German", image: "/lang.svg", bg: "#FCFCFD" },
+    { id: 3, text: "Arabic", image: "/lang.svg", bg: "#FCFCFD" },
+    { id: 4, text: "French", image: "/lang.svg", bg: "#FCFCFD" },
   ];
 
   const handleButtonClick = (id) => {
@@ -316,6 +316,7 @@ function Startpage() {
                     }
                   >
                     <button
+                      style={{ backgroundColor: styleButton.bg }}
                       onClick={() => handleStyleButtonClick(styleButton.id)}
                     >
                       <img src={styleButton.image} className="prev" />
@@ -347,11 +348,12 @@ function Startpage() {
                     }
                   >
                     <button
+                      style={{ backgroundColor: languageButton.bg }}
                       onClick={() =>
                         handleLanguageButtonClick(languageButton.id)
                       }
                     >
-                      <img src="/haken.svg" className="prev" />
+                      <img src={languageButton.image} className="prev" />
                     </button>
                   </div>
                   {selectedLanguageButton === languageButton.id && (
@@ -385,7 +387,10 @@ function Startpage() {
                         : "btnConE"
                     }
                   >
-                    <button onClick={() => handleButtonClick(button.id)}>
+                    <button
+                      style={{ backgroundColor: button.bg }}
+                      onClick={() => handleButtonClick(button.id)}
+                    >
                       <img src={button.image} className="prev" />
                     </button>
                   </div>
