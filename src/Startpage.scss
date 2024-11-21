@@ -365,7 +365,6 @@ body {
   .imgContainer {
     img {
       max-width: 300px;
-      margin-right: 46px;
     }
   }
   .firstParagraph {
@@ -423,6 +422,59 @@ body {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+  }
+  .container {
+    max-width: 360px;
+    .prevBox {
+      background-color: #ffffff;
+      box-shadow: 0px 4px 29.6px 0px #00063021;
+      padding: 12px 13px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      position: relative;
+      top: 15px;
+      margin-bottom: 25px;
+      p {
+        font-size: 15px;
+        font-weight: 590;
+        line-height: 18px;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        span {
+          background: radial-gradient(
+            100% 6362.58% at 100% 0%,
+            #ea994f 8.41%,
+            #e46f90 32.29%,
+            #cc6deb 50.99%,
+            #65b9f9 88.62%
+          );
+          color: transparent;
+          background-clip: text;
+        }
+      }
+    }
+
+    .presentationInit {
+      max-width: 360px;
+    }
+    .presentation {
+      max-width: 360px;
+      position: relative;
+      top: 12.8px;
+    }
+    .summary,
+    .worksheet,
+    .flyer {
+      max-width: 217px;
+    }
+    .worksheet {
+      max-width: 214px;
+    }
+    .flyer {
+      max-width: 218px;
+      position: relative;
+      top: 15px;
+    }
   }
 }
 

@@ -137,72 +137,49 @@ function Startpage() {
 
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    if (isUploaded && selectedStyleButton && selectedButton) {
-      const timer = setTimeout(() => {
-        setLoaded(true);
-      }, 1500);
+  if (isUploaded && selectedStyleButton && selectedButton) {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 1500);
+  }
 
-      return () => clearTimeout(timer);
-    }
-  }, [selectedStyleButton]);
-
-  const [imageData, setImageData] = useState(null);
+  const [previewClassName, setPreviewClassName] = useState("");
 
   const renderSelectedImage = () => {
-    let newImageData = null;
-
     switch (selectedButton) {
       case 1:
-        newImageData = { imagePath: "/summary.png", className: "summary" };
-        break;
+        return { imagePath: "/summary.png", className: "summary" };
       case 2:
         if (selectedStyleButton === 1) {
-          newImageData = {
-            imagePath: "/spread.png",
-            className: "presentationInit",
-          };
+          return { imagePath: "/spread.png", className: "presentationInit" };
         } else if (selectedStyleButton === 2) {
-          newImageData = { imagePath: "/2.png", className: "presentation" };
+          return { imagePath: "/2.png", className: "presentation" };
         } else if (selectedStyleButton === 3) {
-          newImageData = { imagePath: "/3.png", className: "presentation" };
+          return { imagePath: "/3.png", className: "presentation" };
         } else if (selectedStyleButton === 4) {
-          newImageData = { imagePath: "/4.png", className: "presentation" };
+          return { imagePath: "/4.png", className: "presentation" };
         }
         break;
       case 3:
         if (selectedStyleButton === 1) {
-          newImageData = { imagePath: "/flyer1.png", className: "flyer" };
+          return { imagePath: "/flyer1.png", className: "flyer" };
         } else if (selectedStyleButton === 2) {
-          newImageData = { imagePath: "/flyer2.png", className: "flyer" };
+          return { imagePath: "/flyer2.png", className: "flyer" };
         } else if (selectedStyleButton === 3) {
-          newImageData = { imagePath: "/flyer3.png", className: "flyer" };
+          return { imagePath: "/flyer3.png", className: "flyer" };
         } else if (selectedStyleButton === 4) {
-          newImageData = { imagePath: "/flyer4.png", className: "flyer" };
+          return { imagePath: "/flyer4.png", className: "flyer" };
         }
         break;
       case 4:
-        if (
-          selectedStyleButton === 1 ||
-          selectedStyleButton === 2 ||
-          selectedStyleButton === 3 ||
-          selectedStyleButton === 4
-        ) {
-          newImageData = {
-            imagePath: "/worksheet.png",
-            className: "worksheet",
-          };
-        }
-        break;
+        return { imagePath: "/worksheet.png", className: "worksheet" };
       default:
         return null;
     }
-
-    // Verwende setTimeout, um die Änderung mit einer Verzögerung anzuwenden
-    setTimeout(() => {
-      setImageData(newImageData); // Setze das neue Bild nach 1500ms
-    }, 1450);
   };
+
+  // Usage in JSX
+  const selectedImage = renderSelectedImage();
 
   function handleStyleDoneClick() {
     if (tempSelectedStyleButton !== null) {
@@ -210,7 +187,6 @@ function Startpage() {
       setAffectPreviewStyle(true);
 
       if (selectedButton && isUploaded) {
-        renderSelectedImage();
         setIsSpinnerActive(true);
         setTimeout(() => {
           setIsSpinnerActive(false);
@@ -225,7 +201,6 @@ function Startpage() {
       setAffectPreviewFormat(true);
 
       if (selectedStyleButton && isUploaded === true) {
-        renderSelectedImage();
         setIsSpinnerActive(true);
         setTimeout(() => {
           setIsSpinnerActive(false);
@@ -238,7 +213,6 @@ function Startpage() {
     if (tempSelectedLanguageButton !== null) {
       setSelectedLanguageButton(tempSelectedLanguageButton);
       if (selectedStyleButton && isUploaded === true && selectedButton) {
-        renderSelectedImage();
         setIsSpinnerActive(true);
         setTimeout(() => {
           setIsSpinnerActive(false);
@@ -316,24 +290,14 @@ function Startpage() {
           </div>
         </div>
         <div className="formatLoading">
-          {imageData ? (
-            <div className="container">
-              <img
-                src={imageData.imagePath}
-                alt="Preview"
-                className={imageData.className}
-              />
+          <div className="container">
+            <div className="prevBox">
+              <p>
+                Upload your Document <br /> & transform it into{" "}
+                <span>WOW.</span>
+              </p>
             </div>
-          ) : (
-            <div className="container">
-              <div className="prevBox">
-                <p>
-                  Upload your Document <br /> & transform it into{" "}
-                  <span>WOW.</span>
-                </p>
-              </div>
-            </div>
-          )}
+          </div>
           <img
             src="/loading.svg"
             alt="loading..."
@@ -526,11 +490,30 @@ function Startpage() {
         <button className="closeButton" onClick={toggleFinishModal}>
           <img src="/x.svg" alt="x" />
         </button>
-        <div className="imgContainer">
-          <img src="./bdrprs.png" alt="Result" />
-        </div>
+        {loaded ? (
+          <div className="container">
+            <img
+              src={selectedImage.imagePath}
+              alt="Preview"
+              className={selectedImage.className}
+            />
+          </div>
+        ) : (
+          <h1>No selection</h1>
+        )}
+
         <p className="firstParagraph">
-          Your Presentation <br />
+          Your{" "}
+          {selectedButton == 1
+            ? "Summary"
+            : selectedButton == 2
+            ? "Presentation"
+            : selectedButton == 3
+            ? "Flyer "
+            : selectedButton == 4
+            ? "Worksheet"
+            : "Format"}{" "}
+          <br />
           <span>is ready</span>
         </p>
         <p className="downloadText">Download now</p>
@@ -539,7 +522,17 @@ function Startpage() {
           <p className="downloadText">Download</p>
         </button>
         <p className="downloadDes">
-          Your pdf document has been transformed into a brand new presentation.
+          Your pdf document has been transformed into a brand new{" "}
+          {selectedButton == 1
+            ? "summary"
+            : selectedButton == 2
+            ? "presentation"
+            : selectedButton == 3
+            ? "flyer "
+            : selectedButton == 4
+            ? "worksheet"
+            : "format"}
+          .
         </p>
       </div>
     </>
