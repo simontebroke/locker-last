@@ -436,8 +436,10 @@ function Startpage() {
                       <img src={languageButton.image} className="prev" />
                     </button>
                   </div>
-                  {tempSelectedLanguageButton === languageButton.id && (
-                    <img src="/blackhaken.svg" className="ok" />
+                  {tempSelectedLanguageButton === languageButton.id ? (
+                    <img src="/blackhaken.svg" className="ok active" />
+                  ) : (
+                    <img src="/blackhaken.svg" className="ok " />
                   )}
                   <p className="buttonConText">{languageButton.text}</p>
                 </div>
@@ -474,8 +476,10 @@ function Startpage() {
                       <img src={button.image} className="prev" />
                     </button>
                   </div>
-                  {tempSelectedFormatButton === button.id && (
-                    <img src="/blackhaken.svg" className="ok" />
+                  {tempSelectedFormatButton === button.id ? (
+                    <img src="/blackhaken.svg" className="ok active" />
+                  ) : (
+                    <img src="/blackhaken.svg" className="ok " />
                   )}
                   <p className="buttonConText">{button.text}</p>
                 </div>
