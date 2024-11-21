@@ -55,7 +55,7 @@ function Startpage() {
 
   const buttons = [
     { id: 1, text: "Summary", image: "/summary.svg", bg: "#E2ECFF" },
-    { id: 2, text: "Presentation", image: "/presentation.svg", bg: "#F0E4FF" },
+    { id: 2, text: "Presentation", image: "/wwq.svg", bg: "#F0E4FF" },
     { id: 3, text: "Flyer", image: "/flyer.svg", bg: "#F1FFFC" },
     { id: 4, text: "Worksheet", image: "/worksheet.svg", bg: "#FEFFEE" },
   ];
