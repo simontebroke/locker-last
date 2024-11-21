@@ -702,15 +702,99 @@ function Startpage() {
           <span>is ready</span>
         </p>
         <p className="downloadText">Download now</p>
-        <a
-          href="/SpreadMarketSaudiArabia.pdf"
-          download="SpreadMarketSaudiArabia.pdf"
-        >
-          <button className="downloadButton">
-            <img src="/cloudblack.svg" alt="Download" />
-            <p className="downloadText">Download</p>
-          </button>
-        </a>
+        {selectedButton === 1 ? (
+          <a href="/Summary.pdf" download="Summary.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 2 && selectedStyleButton === 1 ? (
+          <a
+            href="/SpreadMarketSaudiArabia.pdf"
+            download="SpreadMarketSaudiArabia.pdf"
+          >
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 2 && selectedStyleButton === 2 ? (
+          <a
+            href="/PresentationEducation.pdf"
+            download="PresentationEducation.pdf"
+          >
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 2 && selectedStyleButton === 3 ? (
+          <a
+            href="/PresentationMinimalistic.pdf"
+            download="PresentationMinimalistic.pdf"
+          >
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 2 && selectedStyleButton === 4 ? (
+          <a
+            href="/PresentationAesthetic.pdf"
+            download="PresentationAesthetic.pdf"
+          >
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 3 && selectedStyleButton === 1 ? (
+          <a href="/FlyerBusiness.pdf" download="FlyerBusiness.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 3 && selectedStyleButton === 2 ? (
+          <a href="/FlyerEducation.pdf" download="FlyerEducation.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 3 && selectedStyleButton === 3 ? (
+          <a href="/FlyerMinimalistic.pdf" download="FlyerMinimalistic.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 3 && selectedStyleButton === 4 ? (
+          <a href="/FlyerAesthetic.pdf" download="FlyerAesthetic.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : selectedButton === 4 ? (
+          <a href="/Worksheet.pdf" download="Worksheet.pdf">
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        ) : (
+          <a
+            href="/SpreadMarketSaudiArabia.pdf"
+            download="SpreadMarketSaudiArabia.pdf"
+          >
+            <button className="downloadButton">
+              <img src="/cloudblack.svg" alt="Download" />
+              <p className="downloadText">Download</p>
+            </button>
+          </a>
+        )}
         <p className="downloadDes">
           Your pdf document has been transformed into a brand new{" "}
           {selectedButton == 1
