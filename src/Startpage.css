@@ -474,6 +474,9 @@ body {
   position: relative;
   top: 15px;
 }
+.finishModal .container .summary {
+  max-width: 210px;
+}
 
 .createModalOpen {
   top: calc(100vh - 507px);
