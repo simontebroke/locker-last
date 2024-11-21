@@ -336,12 +336,19 @@ body {
   position: fixed;
   bottom: 0;
   top: 100%;
+  // background: linear-gradient(
+  // 180deg,
+  //   rgba(230, 220, 255, 0) 0%,
+  //   rgba(218, 213, 233, 0.43) 23.83%,
+  //  rgba(215, 196, 249, 0.9) 85.44%
+  // );
   background: linear-gradient(
     180deg,
-    rgba(230, 220, 255, 0) 0%,
-    rgba(218, 213, 233, 0.43) 23.83%,
-    rgba(215, 196, 249, 0.9) 85.44%
+    rgba(221, 220, 255, 0) 0%,
+    rgba(215, 213, 233, 0.43) 23.83%,
+    rgba(217, 217, 225, 0.9) 85.44%
   );
+
   left: 0;
   right: 0;
   z-index: 20;
@@ -424,7 +431,8 @@ body {
     }
   }
   .downloadDes {
-    color: #8c8c90;
+    //color: #8c8c90;
+    color: #a3a1ad;
     font-size: 15px;
     font-weight: 300;
     line-height: 22px;
