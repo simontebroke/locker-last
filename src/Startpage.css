@@ -385,11 +385,12 @@ body {
   font-weight: 410;
   line-height: 13.13px;
   text-align: center;
-  text-underline-position: from-font;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
   color: #8c8c90;
   margin-top: 5px;
+}
+.finishModal a {
+  text-decoration: none !important;
+  width: 100%;
 }
 .finishModal .downloadButton {
   background: rgba(253, 252, 255, 0.631372549);
@@ -475,7 +476,7 @@ body {
   top: 15px;
 }
 .finishModal .container .summary {
-  max-width: 210px;
+  max-width: 204px;
 }
 
 .createModalOpen {

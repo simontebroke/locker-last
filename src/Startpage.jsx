@@ -55,7 +55,7 @@ function Startpage() {
 
   const buttons = [
     { id: 1, text: "Summary", image: "/summary.svg", bg: "#E2ECFF" },
-    { id: 2, text: "Presentation", image: "/wwq.svg", bg: "#F0E4FF" },
+    { id: 2, text: "Presentation", image: "/presi.svg", bg: "#F0E4FF" },
     { id: 3, text: "Flyer", image: "/flyer.svg", bg: "#F1FFFC" },
     { id: 4, text: "Worksheet", image: "/worksheet.svg", bg: "#FEFFEE" },
   ];
@@ -702,10 +702,15 @@ function Startpage() {
           <span>is ready</span>
         </p>
         <p className="downloadText">Download now</p>
-        <button className="downloadButton">
-          <img src="/cloudblack.svg" alt="Download" />
-          <p className="downloadText">Download</p>
-        </button>
+        <a
+          href="/SpreadMarketSaudiArabia.pdf"
+          download="SpreadMarketSaudiArabia.pdf"
+        >
+          <button className="downloadButton">
+            <img src="/cloudblack.svg" alt="Download" />
+            <p className="downloadText">Download</p>
+          </button>
+        </a>
         <p className="downloadDes">
           Your pdf document has been transformed into a brand new{" "}
           {selectedButton == 1

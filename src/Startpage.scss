@@ -392,10 +392,12 @@ body {
     font-weight: 410;
     line-height: 13.13px;
     text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
     color: #8c8c90;
     margin-top: 5px;
+  }
+  a {
+    text-decoration: none !important;
+    width: 100%;
   }
   .downloadButton {
     background: #fdfcffa1;
@@ -483,7 +485,7 @@ body {
       top: 15px;
     }
     .summary {
-      max-width: 210px;
+      max-width: 204px;
     }
   }
 }
