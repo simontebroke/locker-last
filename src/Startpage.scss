@@ -430,32 +430,122 @@ body {
   top: calc(100vh - 507px);
 }
 
-@media only screen and (max-width: 420px) {
-  #footer .formatSelection .formatSelectorButtonContainer {
-    gap: 15px;
+@media only screen and (max-width: 426px) {
+  #previewSection .selectorsButton.styleButton {
+    top: 176px;
+    left: 56px;
   }
-  #footer .lowerFunctions {
-    gap: 10px;
-    min-width: 380px;
+  #previewSection .selectorsButton.languageButton {
+    top: 214px;
+    right: 10px;
+  }
+  #previewSection .selectorsButton.formatButton {
+    top: 420px;
+    left: 43px;
+  }
+  #previewSection .selectorsButton.uploadButton {
+    top: 435px;
+    right: 46px;
+  }
+  #previewSection .container .presentationInit {
+    max-width: 350px;
+  }
+  #previewSection .container .presentation {
+    max-width: 350px;
+    position: relative;
+    top: 12.8px;
+  }
+  #previewSection .container .summary,
+  #previewSection .container .worksheet,
+  #previewSection .container .flyer {
+    max-width: 280px;
+  }
+  #previewSection .container .worksheet {
+    position: relative;
+    top: 11px;
+  }
+  #previewSection .container .flyer {
+    position: relative;
+    top: 19px;
   }
 }
 
-@media only screen and (max-width: 403px) {
-  #footer .formatSelection .formatSelectorButtonContainer {
-    gap: 13px;
+@media only screen and (max-width: 409px) {
+  #previewSection .selectorsButton.styleButton {
+    top: 176px;
+    left: 50px;
   }
-  #footer .lowerFunctions {
-    gap: 9px;
-    min-width: 360px;
+  #previewSection .selectorsButton.languageButton {
+    top: 214px;
+    right: 7px;
+  }
+  #previewSection .selectorsButton.formatButton {
+    top: 420px;
+    left: 38px;
+  }
+  #previewSection .selectorsButton.uploadButton {
+    top: 435px;
+    right: 46px;
+  }
+  #previewSection .container .presentationInit {
+    max-width: 340px;
+  }
+  #previewSection .container .presentation {
+    max-width: 340px;
+    position: relative;
+    top: 12.8px;
+  }
+  #previewSection .container .summary,
+  #previewSection .container .worksheet,
+  #previewSection .container .flyer {
+    max-width: 280px;
+  }
+  #previewSection .container .worksheet {
+    position: relative;
+    top: 11px;
+  }
+  #previewSection .container .flyer {
+    position: relative;
+    top: 19px;
   }
 }
 
-@media only screen and (max-width: 385px) {
-  #footer .formatSelection .formatSelectorButtonContainer {
-    gap: 10px;
+@media only screen and (max-width: 395px) {
+  #previewSection .selectorsButton.styleButton {
+    top: 182px;
+    left: 56px;
   }
-  #footer .lowerFunctions {
-    gap: 6px;
-    min-width: 330px;
+  #previewSection .selectorsButton.languageButton {
+    top: 214px;
+    right: 10px;
+  }
+  #previewSection .selectorsButton.formatButton {
+    top: 420px;
+    left: 43px;
+  }
+  #previewSection .selectorsButton.uploadButton {
+    top: 435px;
+    right: 46px;
+  }
+  #previewSection .container .presentationInit {
+    max-width: 310px;
+  }
+  #previewSection .container .presentation {
+    max-width: 310px;
+    position: relative;
+    top: 12.8px;
+  }
+  #previewSection .container .summary,
+  #previewSection .container .worksheet,
+  #previewSection .container .flyer {
+    max-width: 280px;
+  }
+  #previewSection .container .worksheet {
+    position: relative;
+    top: 11px;
+  }
+  #previewSection .container .flyer {
+    position: relative;
+    top: 19px;
   }
 }

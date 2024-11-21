@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Startpage.css";
 
 function Startpage() {
@@ -9,25 +9,25 @@ function Startpage() {
   const [affectPreviewStyle, setAffectPreviewStyle] = useState(false);
   const [affectPreviewFormat, setAffectPreviewFormat] = useState(false);
 
-  function handleStyleDoneClick() {
-    setAffectPreviewStyle(true);
-    if (selectedFormat && selectedStyleButton && isUploaded) {
-      setIsSpinnerActive(true);
-      setTimeout(() => {
-        setIsSpinnerActive(false);
-      }, 1500);
-    }
-  }
+  const [tempSelectedStyleButton, setTempSelectedStyleButton] = useState(null);
 
-  function handleFormatDoneClick() {
-    setAffectPreviewFormat(true);
-    if (selectedFormat && selectedStyleButton && isUploaded === true) {
-      setIsSpinnerActive(true);
-      setTimeout(() => {
-        setIsSpinnerActive(false);
-      }, 1000);
-    }
-  }
+  const [tempSelectedFormatButton, setTempSelectedFormatButton] =
+    useState(null);
+
+  const [tempSelectedLanguageButton, setTempSelectedLanguageButton] =
+    useState(null);
+
+  const handleTempStyleButtonClick = (id) => {
+    setTempSelectedStyleButton(id);
+  };
+
+  const handleTempLanguageButtonClick = (id) => {
+    setTempSelectedLanguageButton(id);
+  };
+
+  const handleTempFormatButtonClick = (id) => {
+    setTempSelectedFormatButton(id);
+  };
 
   const [isSpinnerActive, setIsSpinnerActive] = useState(false);
 
@@ -60,10 +60,6 @@ function Startpage() {
     { id: 4, text: "Worksheet", image: "/worksheet.svg", bg: "#FEFFEE" },
   ];
 
-  const selectedFormat = buttons.find(
-    (button) => button.id === selectedButton
-  )?.text;
-
   const styleButtons = [
     { id: 1, text: "Business", image: "/business.svg", bg: "#EEF8FF" },
     { id: 2, text: "Education", image: "/education.svg", bg: "#F4FFDE" },
@@ -78,21 +74,12 @@ function Startpage() {
     { id: 4, text: "French", image: "/lang.svg", bg: "#FCFCFD" },
   ];
 
-  const handleButtonClick = (id) => {
-    setSelectedButton(id);
-  };
-
-  const handleStyleButtonClick = (id) => {
-    setSelectedStyleButton(id);
-  };
-
-  const handleLanguageButtonClick = (id) => {
-    setSelectedLanguageButton(id);
-  };
-
   const [fileName, setFileName] = useState("");
   const fileInputRef = useRef(null);
 
+  const selectedFormat = buttons.find(
+    (button) => button.id === selectedButton
+  )?.text;
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     const allowedTypes = [
@@ -150,50 +137,115 @@ function Startpage() {
 
   const [loaded, setLoaded] = useState(false);
 
-  if (isUploaded && selectedStyleButton && selectedButton) {
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1500);
-  }
+  useEffect(() => {
+    if (isUploaded && selectedStyleButton && selectedButton) {
+      const timer = setTimeout(() => {
+        setLoaded(true);
+      }, 1500);
 
-  const [previewClassName, setPreviewClassName] = useState("");
+      return () => clearTimeout(timer);
+    }
+  }, [selectedStyleButton]);
+
+  const [imageData, setImageData] = useState(null);
 
   const renderSelectedImage = () => {
+    let newImageData = null;
+
     switch (selectedButton) {
       case 1:
-        return { imagePath: "/summary.png", className: "summary" };
+        newImageData = { imagePath: "/summary.png", className: "summary" };
+        break;
       case 2:
         if (selectedStyleButton === 1) {
-          return { imagePath: "/spread.png", className: "presentationInit" };
+          newImageData = {
+            imagePath: "/spread.png",
+            className: "presentationInit",
+          };
         } else if (selectedStyleButton === 2) {
-          return { imagePath: "/2.png", className: "presentation" };
+          newImageData = { imagePath: "/2.png", className: "presentation" };
         } else if (selectedStyleButton === 3) {
-          return { imagePath: "/3.png", className: "presentation" };
+          newImageData = { imagePath: "/3.png", className: "presentation" };
         } else if (selectedStyleButton === 4) {
-          return { imagePath: "/4.png", className: "presentation" };
+          newImageData = { imagePath: "/4.png", className: "presentation" };
         }
         break;
       case 3:
         if (selectedStyleButton === 1) {
-          return { imagePath: "/flyer1.png", className: "flyer" };
+          newImageData = { imagePath: "/flyer1.png", className: "flyer" };
         } else if (selectedStyleButton === 2) {
-          return { imagePath: "/flyer2.png", className: "flyer" };
+          newImageData = { imagePath: "/flyer2.png", className: "flyer" };
         } else if (selectedStyleButton === 3) {
-          return { imagePath: "/flyer3.png", className: "flyer" };
+          newImageData = { imagePath: "/flyer3.png", className: "flyer" };
         } else if (selectedStyleButton === 4) {
-          return { imagePath: "/flyer4.png", className: "flyer" };
+          newImageData = { imagePath: "/flyer4.png", className: "flyer" };
         }
         break;
       case 4:
-        return { imagePath: "/worksheet.png", className: "worksheet" };
+        if (
+          selectedStyleButton === 1 ||
+          selectedStyleButton === 2 ||
+          selectedStyleButton === 3 ||
+          selectedStyleButton === 4
+        ) {
+          newImageData = {
+            imagePath: "/worksheet.png",
+            className: "worksheet",
+          };
+        }
+        break;
       default:
         return null;
     }
+
+    // Verwende setTimeout, um die Änderung mit einer Verzögerung anzuwenden
+    setTimeout(() => {
+      setImageData(newImageData); // Setze das neue Bild nach 1500ms
+    }, 1450);
   };
 
-  // Usage in JSX
-  const selectedImage = renderSelectedImage();
+  function handleStyleDoneClick() {
+    if (tempSelectedStyleButton !== null) {
+      setSelectedStyleButton(tempSelectedStyleButton);
+      setAffectPreviewStyle(true);
 
+      if (selectedButton && isUploaded) {
+        renderSelectedImage();
+        setIsSpinnerActive(true);
+        setTimeout(() => {
+          setIsSpinnerActive(false);
+        }, 1500);
+      }
+    }
+  }
+
+  function handleFormatDoneClick() {
+    if (tempSelectedFormatButton !== null) {
+      setSelectedButton(tempSelectedFormatButton);
+      setAffectPreviewFormat(true);
+
+      if (selectedStyleButton && isUploaded === true) {
+        renderSelectedImage();
+        setIsSpinnerActive(true);
+        setTimeout(() => {
+          setIsSpinnerActive(false);
+        }, 1500);
+      }
+    }
+  }
+
+  function handleLanguageDoneClick() {
+    if (tempSelectedLanguageButton !== null) {
+      setSelectedLanguageButton(tempSelectedLanguageButton);
+      if (selectedStyleButton && isUploaded === true && selectedButton) {
+        renderSelectedImage();
+        setIsSpinnerActive(true);
+        setTimeout(() => {
+          setIsSpinnerActive(false);
+        }, 1000);
+      }
+    }
+  }
   return (
     <>
       <div className="topContainer">
@@ -222,7 +274,7 @@ function Startpage() {
               <img src="/hayken.svg" className="haken" />
             )}
             <div className="svgContainer styleSvg">
-              <img src="/sparklesnew.svg" alt="Style" />
+              <img src="/newsparkles.svg" alt="Style" />
             </div>
             <div className="uploadTextContainer">
               <p className="selectorsText">Style</p>
@@ -264,12 +316,12 @@ function Startpage() {
           </div>
         </div>
         <div className="formatLoading">
-          {loaded ? (
+          {imageData ? (
             <div className="container">
               <img
-                src={selectedImage.imagePath}
+                src={imageData.imagePath}
                 alt="Preview"
-                className={selectedImage.className}
+                className={imageData.className}
               />
             </div>
           ) : (
@@ -302,7 +354,7 @@ function Startpage() {
               <img src="/hayken.svg" className="haken" />
             )}
             <div className="svgContainer styleSvg">
-              <img src="/easel.svg" alt="Format" />
+              <img src="/newtv.svg" alt="Format" />
             </div>
             <div className="uploadTextContainer">
               <p className="selectorsText">Format</p>
@@ -366,19 +418,19 @@ function Startpage() {
                 <div className="styleButtonContainer" key={styleButton.id}>
                   <div
                     className={
-                      selectedStyleButton === styleButton.id
+                      tempSelectedStyleButton === styleButton.id
                         ? "btnConE active"
                         : "btnConE"
                     }
                   >
                     <button
                       style={{ backgroundColor: styleButton.bg }}
-                      onClick={() => handleStyleButtonClick(styleButton.id)}
+                      onClick={() => handleTempStyleButtonClick(styleButton.id)}
                     >
                       <img src={styleButton.image} className="prev" />
                     </button>
                   </div>
-                  {selectedStyleButton === styleButton.id && (
+                  {tempSelectedStyleButton === styleButton.id && (
                     <img src="/blackhaken.svg" className="ok" />
                   )}
                   <p className="buttonConText">{styleButton.text}</p>
@@ -388,7 +440,13 @@ function Startpage() {
           </>
         ) : showLanguageModal && !showFormatModal ? (
           <>
-            <button className="doneButton" onClick={toggleModal}>
+            <button
+              className="doneButton"
+              onClick={() => {
+                toggleModal();
+                handleLanguageDoneClick();
+              }}
+            >
               Done
             </button>
             <p className="paragraphHeading">Language</p>
@@ -398,7 +456,7 @@ function Startpage() {
                 <div className="styleButtonContainer" key={languageButton.id}>
                   <div
                     className={
-                      selectedLanguageButton === languageButton.id
+                      tempSelectedLanguageButton === languageButton.id
                         ? "btnConE active"
                         : "btnConE"
                     }
@@ -406,13 +464,13 @@ function Startpage() {
                     <button
                       style={{ backgroundColor: languageButton.bg }}
                       onClick={() =>
-                        handleLanguageButtonClick(languageButton.id)
+                        handleTempLanguageButtonClick(languageButton.id)
                       }
                     >
                       <img src={languageButton.image} className="prev" />
                     </button>
                   </div>
-                  {selectedLanguageButton === languageButton.id && (
+                  {tempSelectedLanguageButton === languageButton.id && (
                     <img src="/blackhaken.svg" className="ok" />
                   )}
                   <p className="buttonConText">{languageButton.text}</p>
@@ -438,19 +496,19 @@ function Startpage() {
                 <div className="styleButtonContainer" key={button.id}>
                   <div
                     className={
-                      selectedButton === button.id
+                      tempSelectedFormatButton === button.id
                         ? "btnConE active"
                         : "btnConE"
                     }
                   >
                     <button
                       style={{ backgroundColor: button.bg }}
-                      onClick={() => handleButtonClick(button.id)}
+                      onClick={() => handleTempFormatButtonClick(button.id)}
                     >
                       <img src={button.image} className="prev" />
                     </button>
                   </div>
-                  {selectedButton === button.id && (
+                  {tempSelectedFormatButton === button.id && (
                     <img src="/blackhaken.svg" className="ok" />
                   )}
                   <p className="buttonConText">{button.text}</p>
