@@ -160,8 +160,26 @@
       }
     }
 
-    img {
+    .presentationInit {
       max-width: 360px;
+    }
+    .presentation {
+      max-width: 360px;
+      position: relative;
+      top: 12.8px;
+    }
+    .summary,
+    .worksheet,
+    .flyer {
+      max-width: 280px;
+    }
+    .worksheet {
+      position: relative;
+      top: 11px;
+    }
+    .flyer {
+      position: relative;
+      top: 19px;
     }
   }
 }
@@ -374,9 +392,9 @@ body {
     margin-top: 5px;
   }
   .downloadButton {
-    background: #746bcb;
+    background: #fdfcffa1;
     border: none;
-    border-radius: 25px;
+    border-radius: 10px;
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -386,7 +404,7 @@ body {
     margin: 16px 0px 14px;
     padding: 8px;
     p {
-      color: #fff;
+      color: #1d1d1f;
       font-size: 17px;
       font-weight: 490;
       margin-left: 6px;

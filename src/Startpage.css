@@ -159,8 +159,26 @@
   -webkit-background-clip: text;
           background-clip: text;
 }
-#previewSection .container img {
+#previewSection .container .presentationInit {
   max-width: 360px;
+}
+#previewSection .container .presentation {
+  max-width: 360px;
+  position: relative;
+  top: 12.8px;
+}
+#previewSection .container .summary,
+#previewSection .container .worksheet,
+#previewSection .container .flyer {
+  max-width: 280px;
+}
+#previewSection .container .worksheet {
+  position: relative;
+  top: 11px;
+}
+#previewSection .container .flyer {
+  position: relative;
+  top: 19px;
 }
 
 .loadingCircle {
@@ -369,9 +387,9 @@ body {
   margin-top: 5px;
 }
 .finishModal .downloadButton {
-  background: #746bcb;
+  background: rgba(253, 252, 255, 0.631372549);
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
@@ -382,7 +400,7 @@ body {
   padding: 8px;
 }
 .finishModal .downloadButton p {
-  color: #fff;
+  color: #1d1d1f;
   font-size: 17px;
   font-weight: 490;
   margin-left: 6px;

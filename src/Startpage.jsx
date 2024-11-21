@@ -156,26 +156,43 @@ function Startpage() {
     }, 1500);
   }
 
+  const [previewClassName, setPreviewClassName] = useState("");
+
   const renderSelectedImage = () => {
     switch (selectedButton) {
       case 1:
-        return "/spread.png";
+        return { imagePath: "/summary.png", className: "summary" };
       case 2:
         if (selectedStyleButton === 1) {
-          return "/spread.png";
+          return { imagePath: "/spread.png", className: "presentationInit" };
         } else if (selectedStyleButton === 2) {
-          return "2.png";
+          return { imagePath: "/2.png", className: "presentation" };
         } else if (selectedStyleButton === 3) {
-          return "3.png";
+          return { imagePath: "/3.png", className: "presentation" };
         } else if (selectedStyleButton === 4) {
-          return "4.png";
+          return { imagePath: "/4.png", className: "presentation" };
         }
+        break;
       case 3:
-        return "/spread.png";
+        if (selectedStyleButton === 1) {
+          return { imagePath: "/flyer1.png", className: "flyer" };
+        } else if (selectedStyleButton === 2) {
+          return { imagePath: "/flyer2.png", className: "flyer" };
+        } else if (selectedStyleButton === 3) {
+          return { imagePath: "/flyer3.png", className: "flyer" };
+        } else if (selectedStyleButton === 4) {
+          return { imagePath: "/flyer4.png", className: "flyer" };
+        }
+        break;
       case 4:
-        return "/spread.png";
+        return { imagePath: "/worksheet.png", className: "worksheet" };
+      default:
+        return null;
     }
   };
+
+  // Usage in JSX
+  const selectedImage = renderSelectedImage();
 
   return (
     <>
@@ -184,12 +201,7 @@ function Startpage() {
         <button
           onClick={toggleFinishModal}
           className={`topContainerButton createButton ${
-            isUploaded &&
-            selectedStyleButton &&
-            selectedButton &&
-            selectedLanguageButton
-              ? "active"
-              : ""
+            isUploaded && selectedStyleButton && selectedButton ? "active" : ""
           }`}
         >
           Create
@@ -254,7 +266,11 @@ function Startpage() {
         <div className="formatLoading">
           {loaded ? (
             <div className="container">
-              <img src={renderSelectedImage()} alt="Preview" />
+              <img
+                src={selectedImage.imagePath}
+                alt="Preview"
+                className={selectedImage.className}
+              />
             </div>
           ) : (
             <div className="container">
@@ -461,7 +477,7 @@ function Startpage() {
         </p>
         <p className="downloadText">Download now</p>
         <button className="downloadButton">
-          <img src="/cloud.svg" alt="Download" />
+          <img src="/cloudblack.svg" alt="Download" />
           <p className="downloadText">Download</p>
         </button>
         <p className="downloadDes">
