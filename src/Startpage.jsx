@@ -524,15 +524,14 @@ function Startpage() {
         <p className="downloadDes">
           Your pdf document has been transformed into a brand new{" "}
           {selectedButton == 1
-            ? "summary"
+            ? "summary."
             : selectedButton == 2
-            ? "presentation"
+            ? "presentation."
             : selectedButton == 3
-            ? "flyer "
+            ? "flyer."
             : selectedButton == 4
-            ? "worksheet"
-            : "format"}
-          .
+            ? "worksheet."
+            : "format."}
         </p>
       </div>
     </>

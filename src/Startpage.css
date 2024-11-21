@@ -349,6 +349,7 @@ body {
   background: #e8e8eb;
   padding: 5px;
   border: none;
+  z-index: 500;
   text-align: center;
   font-size: 15px;
   font-weight: 590;
@@ -448,10 +449,10 @@ body {
           background-clip: text;
 }
 .finishModal .container .presentationInit {
-  max-width: 360px;
+  max-width: 310px;
 }
 .finishModal .container .presentation {
-  max-width: 360px;
+  max-width: 315px;
   position: relative;
   top: 12.8px;
 }
@@ -461,10 +462,10 @@ body {
   max-width: 217px;
 }
 .finishModal .container .worksheet {
-  max-width: 214px;
+  max-width: 185px;
 }
 .finishModal .container .flyer {
-  max-width: 218px;
+  max-width: 180px;
   position: relative;
   top: 15px;
 }
