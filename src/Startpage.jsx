@@ -394,8 +394,10 @@ function Startpage() {
                       <img src={styleButton.image} className="prev" />
                     </button>
                   </div>
-                  {tempSelectedStyleButton === styleButton.id && (
-                    <img src="/blackhaken.svg" className="ok" />
+                  {tempSelectedStyleButton === styleButton.id ? (
+                    <img src="/blackhaken.svg" className="ok active" />
+                  ) : (
+                    <img src="/blackhaken.svg" className="ok " />
                   )}
                   <p className="buttonConText">{styleButton.text}</p>
                 </div>
@@ -499,7 +501,7 @@ function Startpage() {
             />
           </div>
         ) : (
-          <h1>No selection</h1>
+          <h1>Loading...</h1>
         )}
 
         <p className="firstParagraph">

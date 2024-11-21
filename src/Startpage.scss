@@ -280,7 +280,6 @@
           outline: #1d1d1f 2px solid;
           border-radius: 50%;
           max-height: 59px;
-          margin-bottom: -33px;
         }
       }
       button {
@@ -292,7 +291,13 @@
       .ok {
         position: relative;
         right: -21px;
-        bottom: -3px;
+        bottom: 28px;
+        visibility: hidden;
+        margin-bottom: -33px;
+
+        &.active {
+          visibility: visible;
+        }
       }
       .buttonConText {
         font-size: 12px;
@@ -302,6 +307,7 @@
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
         color: #1d1d1f;
+        position: relative;
       }
     }
   }
