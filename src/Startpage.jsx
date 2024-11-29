@@ -153,9 +153,9 @@ function Startpage() {
         if (selectedStyleButton === 1) {
           return { imagePath: "/spread.png", className: "presentationInit" };
         } else if (selectedStyleButton === 2) {
-          return { imagePath: "/2.png", className: "presentation" };
-        } else if (selectedStyleButton === 3) {
           return { imagePath: "/3.png", className: "presentation" };
+        } else if (selectedStyleButton === 3) {
+          return { imagePath: "/2.png", className: "presentation" };
         } else if (selectedStyleButton === 4) {
           return { imagePath: "/4.png", className: "presentation" };
         }
