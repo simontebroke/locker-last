@@ -721,8 +721,8 @@ function Startpage() {
           </a>
         ) : selectedButton === 2 && selectedStyleButton === 2 ? (
           <a
-            href="/PresentationEducation.pdf"
-            download="PresentationEducation.pdf"
+            href="/SpreadMarketSaudiArabiaEducation.pdf"
+            download="SpreadMarketSaudiArabiaEducation.pdf"
           >
             <button className="downloadButton">
               <img src="/cloudblack.svg" alt="Download" />
@@ -731,8 +731,8 @@ function Startpage() {
           </a>
         ) : selectedButton === 2 && selectedStyleButton === 3 ? (
           <a
-            href="/PresentationMinimalistic.pdf"
-            download="PresentationMinimalistic.pdf"
+            href="/SpreadMarketSaudiArabiaMinimalistic.pdf"
+            download="SpreadMarketSaudiArabiaMinimalistic.pdf"
           >
             <button className="downloadButton">
               <img src="/cloudblack.svg" alt="Download" />
@@ -741,8 +741,8 @@ function Startpage() {
           </a>
         ) : selectedButton === 2 && selectedStyleButton === 4 ? (
           <a
-            href="/PresentationAesthetic.pdf"
-            download="PresentationAesthetic.pdf"
+            href="/SpreadMarketSaudiArabiaAesthetic.pdf"
+            download="SpreadMarketSaudiArabiaAesthetic.pdf"
           >
             <button className="downloadButton">
               <img src="/cloudblack.svg" alt="Download" />
